@@ -27,25 +27,6 @@ jobs:
     name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
     steps:
-<<<<<<< HEAD
-      - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd ~/var/www/html/react/
-            yarn/npm install
-            yarn/npm build
-            yarn/npm i serve
-            serve -p 3000 build/
-    deploy:
-    name: Deploy to EC2 on master branch push
-    runs-on: ubuntu-latest
-    steps:
-=======
->>>>>>> 3e706ce127f74e3737a5bf0282607e75874bb85d
       - name: Checkout the files
         uses: actions/checkout@v2
       - name: Deploy to Server 1
@@ -54,8 +35,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
-<<<<<<< HEAD
-          TARGET: ${{ secrets.TARGET_DIR }}
-=======
-          TARGET: ${{ secrets.TARGET_DIR }}
->>>>>>> 3e706ce127f74e3737a5bf0282607e75874bb85d
+          TARGET: ${{ secrets.TARGET_DIR }} 
