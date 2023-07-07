@@ -10,7 +10,7 @@ jobs:
    steps:
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
-        with:
+        env:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
