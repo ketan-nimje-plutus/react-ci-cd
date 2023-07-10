@@ -24,8 +24,7 @@ jobs:
           cd /var/www/html/react
           npm install
           npm run build
-          npm i serve
-          serve -p 3000 build/
+        
    deploy:
       name: Deploy to EC2 on master branch push
       runs-on: ubuntu-latest
