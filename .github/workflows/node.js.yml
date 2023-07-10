@@ -16,14 +16,13 @@ jobs:
 
     steps:
       - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+        env:
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/var/www/html/react
-            yarn/npm install
-            yarn/npm build
-            yarn/npm i serve
+            cd ${{ secrets.TARGET_DIR }}
+            npm install
+            npm build
+            npm i serve
             serve -p 3000 build/
