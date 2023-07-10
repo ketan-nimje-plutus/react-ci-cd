@@ -22,15 +22,14 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-          SSH_CMD_ARGS : "-o StrictHostKeyChecking=no"
     
-      - name: executing remote ssh commands using password
+      - name: executing remote ssh commands using private key
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ${{ secrets.TARGET_DIR }}
+            cd /var/www/html/react
             npm install
             npm run build
