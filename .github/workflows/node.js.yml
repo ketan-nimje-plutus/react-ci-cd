@@ -24,7 +24,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
           script: |
-            cd ${{ secrets.TARGET_DIR }}
+            cd /var/www/html/react
             npm install
             npm build
             npm i serve
